@@ -1,6 +1,7 @@
-<h1>Pictures!!!111</h1>
+<h1>Pictures!!!111 (<%= @pictures.length %>)</h1>
+<%= link_to "New Picture", "/pictures/new" %>
 
 <% @pictures.each do |picture| %>
-	<p><%= picture[:title] %>, <%= picture[:artist] %></p>
-	<img src="<%= picture[:url] %>">
+  <p><%= picture.title %>, <%= picture.artist %></p>
+  <%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
 <% end %>
