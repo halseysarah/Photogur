@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'pictures' => 'pictures#index'
-  get 'pictures/:id' =>'pictures#shows', as: "picture"
+
+  post 'pictures' => 'pictures#create'
+  get 'pictures/new' => 'pictures#new'
+
+  get 'pictures/:id' =>'pictures#show'
 end
 
 =begin
