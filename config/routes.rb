@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'pictures#index'
-  resources :pictures
+  resources :pictures do
+    member do 
+      post 'upvote'
+    end
+  end
 end
 
 =begin 

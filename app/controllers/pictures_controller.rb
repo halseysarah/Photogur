@@ -13,6 +13,7 @@ class PicturesController < ApplicationController
 
 	def create
 		@picture = Picture.new(picture_params)
+		@picture.votes = 0
 		if @picture.save
 			redirect_to pictures_url
 		else
@@ -38,6 +39,14 @@ class PicturesController < ApplicationController
 		@picture = Picture.find(params[:id])
 		@picture.destroy
 		redirect_to pictures_url
+	end
+
+	def upvote
+		@picture = Picture.find(params[:id])
+		@picture.votes += 1
+
+		@picture.save
+		redirect_to (pictures_path)
 	end
 
 	private

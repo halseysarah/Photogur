@@ -1,7 +1,17 @@
-<h1>Pictures!!!111 (<%= @pictures.length %>)</h1>
-<%= link_to "New Picture", "/pictures/new" %> 
+<h1>Photogur - Simple Ruby on Rails Image Sharing</h1>
+<h2>Currently has (<%= @pictures.length %>) Photos</h2>
+<h3>Menu: <%= link_to "New Picture", "/pictures/new" %> </h3>
 
 <% @pictures.each do |picture| %>
-  <p><%= picture.title %>, <%= picture.artist %></p>
-  <%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
+  <tr><br>
+  	<p><b><font color=pink>Title:</b></font> <%= picture.title %> <b><font color=pink>Artist:</font></b> <%= picture.artist %></p>
+  	<%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
+    <td><%= button_to '+1', upvote_picture_path(picture), method: :post %><%= pluralize(picture.votes, "vote") %></td>
+    <br>
+    <td>Options: </td>
+    <td><%= link_to 'Show', picture %></td>
+    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+    <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <br>
+  </tr>
 <% end %>
