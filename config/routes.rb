@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  
+  root 'pictures#index'
+  resources :pictures
+end
+
+=begin 
+
   get 'pictures' => 'pictures#index'
 
   post 'pictures' => 'pictures#create'
@@ -12,7 +17,6 @@ Rails.application.routes.draw do
 
   delete 'pictures/:id' => 'pictures#destroy', as: "delete_picture"
 
-  root 'pictures#index'
   end
 
 =begin
