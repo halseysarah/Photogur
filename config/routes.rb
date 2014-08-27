@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'pictures/new' => 'pictures#new'
 
   get 'pictures/:id' =>'pictures#show'
-end
+
+  get 'pictures/:id/edit' => 'pictures#edit', as: "edit_picture"
+  patch 'pictures/:id' => "pictures#update"
+  end
 
 =begin
   get 'pictures/0' => 'pictures#picture0'
