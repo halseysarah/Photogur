@@ -2,8 +2,9 @@
 <h2>Currently has (<%= @pictures.length %>) Photos</h2>
 <h3>Menu: <%= link_to "New Picture", "/pictures/new" %> </h3>
 
-<% @pictures.each do |picture| %>
-  <tr><br>
+  <h3><font color=pink>Most Recent Pictures</font></h3>
+  <% @most_recent_pictures.each do |picture| %>
+  <tr>
   	<p><b><font color=pink>Title:</b></font> <%= picture.title %> <b><font color=pink>Artist:</font></b> <%= picture.artist %></p>
   	<%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
     <td><%= button_to '+1', upvote_picture_path(picture), method: :post %><%= pluralize(picture.votes, "vote") %></td>
@@ -14,4 +15,9 @@
     <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <br>
   </tr>
+
+
+
 <% end %>
+
+
